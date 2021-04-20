@@ -7,12 +7,16 @@ const Provider = (props) => {
 
     const [teste,setTeste] = useState("oie")
     
+   
+
 
     
 
     const states = { teste }
     const setters = {  }
-    const requests = {  }
+    const requests = {   
+         
+    }
 
     const data = { states, setters, requests };
 
