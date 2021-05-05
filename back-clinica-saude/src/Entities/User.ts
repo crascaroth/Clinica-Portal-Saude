@@ -1,3 +1,35 @@
 export type AuthenticationData = {
     
 }
+
+
+
+///////////////////////////////////////  MEDIC  ///////////////////////////////////////
+
+export type InputUserMedic = {
+    login: string,
+    password: string,
+    fk_especialidade: string
+}
+
+export type UserMedicComplete ={
+    id: string,
+    login: string,
+    password: string,
+    fk_especialidade: string
+}
+
+
+
+///////////////////////////////////////  PATIENT  ///////////////////////////////////////
+
+export type InputUserPatient = {
+    login: string,
+    password: string,
+}
+
+export type UserPatientComplete = {
+    id: string,
+    login: string,
+    password: string,    
+}
