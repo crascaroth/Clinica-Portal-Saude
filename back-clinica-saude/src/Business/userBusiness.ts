@@ -1,5 +1,5 @@
 import { UserDatabase } from "../Data/UserDatabase";
-import { InputUserMedic, InputUserPatient, UserMedicComplete, UserPatientComplete } from "../Entities/User";
+import { InputUserMedic, InputUserPatient, InputUserSpecialty, UserMedicComplete, UserPatientComplete, UserSpecialtyComplete } from "../Entities/User";
 import { InvalidInputError } from "../Error/InvalidInputError";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
@@ -64,5 +64,20 @@ export class UserBusiness {
 
         return accessToken
 
+    }
+
+    async createUserSpecialty(user: InputUserSpecialty){
+        if(!user.specialty){
+            throw new InvalidInputError("Please insert the specialty")
+        }
+
+        const id = this.idGenerator.generateId()
+        const input: UserSpecialtyComplete = {
+            id,
+            specialty: user.specialty
+        }
+
+        await this.userDatabase.createUserSpecialty(input)
+        
     }
 }

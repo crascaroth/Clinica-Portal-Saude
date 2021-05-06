@@ -1,5 +1,5 @@
-import { UserMedicTable, UserPatientTable } from "../Constant/TableNames";
-import { UserMedicComplete, UserPatientComplete } from "../Entities/User";
+import { SpecialtyTable, UserMedicTable, UserPatientTable } from "../Constant/TableNames";
+import { UserMedicComplete, UserPatientComplete, UserSpecialtyComplete } from "../Entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -26,5 +26,16 @@ export class UserDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message)
         }
 
+    }
+
+    public async createUserSpecialty(user: UserSpecialtyComplete){
+        try {
+            await this.getConnection().raw(`
+            INSERT INTO ${SpecialtyTable} (id, specialty)
+            VALUES ("${user.id}", "${user.specialty}");
+            `)
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
     }
 }
