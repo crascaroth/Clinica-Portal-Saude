@@ -7,9 +7,9 @@ export abstract class BaseDatabase {
     private static connection: Knex | null = null;
 
     protected tableNames = {        
-        UserMedicTable: "Medico",
-        UserPatientTable: "Paciente",
-        SpecialtyTable: "Especialidades"
+        UserMedicTable: "medico",
+        UserPatientTable: "paciente",
+        SpecialtyTable: "especialidades"
     }
 
     protected getConnection(): Knex{

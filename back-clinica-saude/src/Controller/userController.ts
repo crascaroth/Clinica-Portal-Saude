@@ -14,7 +14,7 @@ export class UserController {
             const input: InputUserMedic = {
                 login: req.body.login,
                 password: req.body.password,
-                fk_especialidade: req.body.especialidade,
+                fk_especialidade: req.body.fk_especialidade,
             }
 
             const userBusiness = new UserBusiness(
@@ -25,7 +25,7 @@ export class UserController {
             );
 
             const token = await userBusiness.createUserMedic(input)
-
+            console.log(token)
             res.status(200).send({ token })
 
         } catch (error) {

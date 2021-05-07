@@ -33,8 +33,7 @@ export class UserBusiness {
 
         const accessToken: String = this.authenticator.generateToken({
             id,
-            login: user.login,
-            fk_especialidade: user.fk_especialidade
+            login: user.login,            
 
         })
 
@@ -56,8 +55,8 @@ export class UserBusiness {
         }
 
         await this.userDatabase.createUserPatient(input)
-
-        const accessToken: String = this.authenticator.generateToken({
+        
+        const accessToken: string = this.authenticator.generateToken({
             id,
             login: user.login, 
         })

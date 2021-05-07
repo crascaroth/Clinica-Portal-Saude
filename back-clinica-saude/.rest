@@ -1,0 +1,27 @@
+### Signup Medico
+@especialidade=a5600a4a-61fc-4218-910f-109b0c2048d8
+POST http://localhost:3003/user/signup/medic
+Content-Type: application/json
+
+{
+    "login":"Allison@dois.empregos.com",
+    "password":"123456",
+    "fk_especialidade": "a5600a4a-61fc-4218-910f-109b0c2048d8"
+}
+
+### Signup Paciente
+POST http://localhost:3003/user/signup/patient
+Content-Type: application/json
+
+{
+    "login":"allison@dois.empregos.com",
+    "password": "123456"
+}
+
+### Signup Especialidades
+POST http://localhost:3003/user/signup/specialty
+Content-Type: application/json
+
+{
+    "specialty": "Cardiologista"
+}
