@@ -1,5 +1,5 @@
 import { AppointmentDatabase } from "../Data/AppointmentDatabase";
-import { InputAppointment, InputAppointmentComplete, InputAppointmentType, InputAppointmentTypeComplete } from "../Entities/Appointment";
+import { InputAppointment, InputAppointmentComplete, InputAppointmentRelationComplete, InputAppointmentType, InputAppointmentTypeComplete } from "../Entities/Appointment";
 import { InvalidInputError } from "../Error/InvalidInputError";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
@@ -51,6 +51,15 @@ export class AppointmentBusiness {
         }
 
         await this.appointmentDatabase.createAppointmentType(input)
+    }
+
+    async createAppointmentRelation(appointment_relation: InputAppointmentRelationComplete){
+        if(!appointment_relation.fk_agendamento || !appointment_relation.fk_tipo_de_agendamento){
+            throw new InvalidInputError("Please insert all information")
+        }
+
+        await this.appointmentDatabase.createAppointmentRelation(appointment_relation)
+
     }
 
 }

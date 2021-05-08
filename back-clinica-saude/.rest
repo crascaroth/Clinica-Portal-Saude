@@ -46,3 +46,12 @@ Content-Type: application/json
     "nome": "Consulta",
     "preco": 400
 }
+
+### Create Appointment Relation
+POST http://localhost:3003/appointment/create/relation
+Content-Type: application/json
+
+{
+    "fk_agendamento": "3333f7f6-e4d8-47d7-b663-e6b5710e43a7",
+    "fk_tipo_de_agendamento": "4b46fd45-aa3e-4324-a261-bbcb58a1a87a"
+}

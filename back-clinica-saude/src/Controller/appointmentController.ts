@@ -2,7 +2,7 @@ import { Response, Request } from "express"
 import { AppointmentBusiness } from "../Business/appointmentBusiness";
 import { AppointmentDatabase } from "../Data/AppointmentDatabase";
 import { BaseDatabase } from "../Data/BaseDatabase";
-import { InputAppointment, InputAppointmentType } from "../Entities/Appointment";
+import { InputAppointment, InputAppointmentRelationComplete, InputAppointmentType } from "../Entities/Appointment";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
 import { TokenManager } from "../Services/TokenManager";
@@ -23,7 +23,7 @@ export class AppointmentController {
 
             const appointmentBusiness = new AppointmentBusiness(
                 new AppointmentDatabase,
-                new IdGenerator,                
+                new IdGenerator,
             );
 
             await appointmentBusiness.createAppointment(input)
@@ -46,13 +46,38 @@ export class AppointmentController {
 
             const appointmentBusiness = new AppointmentBusiness(
                 new AppointmentDatabase,
-                new IdGenerator                
+                new IdGenerator
             );
 
             await appointmentBusiness.createAppointmentType(input)
 
             res.status(201).send("Type Created Sucessfully!")
+
+
+        } catch (error) {
+            res.status(400).send({ error: error.message });
+        }
+
+        await BaseDatabase.destroyConnection();
+    }
+
+    async createAppointmentRelation(req: Request, res: Response) {
+        try {
             
+            const input: InputAppointmentRelationComplete = {
+                fk_agendamento: req.body.fk_agendamento,
+                fk_tipo_de_agendamento: req.body.fk_tipo_de_agendamento
+            }
+
+            const appointmentBusiness = new AppointmentBusiness(
+                new AppointmentDatabase,
+                new IdGenerator
+            );
+
+            await appointmentBusiness.createAppointmentRelation(input)
+
+            res.status(201).send("Relation Created Sucessfully!")
+
 
         } catch (error) {
             res.status(400).send({ error: error.message });

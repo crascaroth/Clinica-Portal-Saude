@@ -8,3 +8,4 @@ const appointmentController = new AppointmentController();
 
 appointmentRouter.post("/create", appointmentController.createAppointment)
 appointmentRouter.post("/create/type", appointmentController.createAppointmentType)
+appointmentRouter.post("/create/relation",appointmentController.createAppointmentRelation)

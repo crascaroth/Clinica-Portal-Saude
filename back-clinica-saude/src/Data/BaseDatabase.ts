@@ -11,7 +11,8 @@ export abstract class BaseDatabase {
         UserPatientTable: "paciente",
         SpecialtyTable: "especialidades",
         AppointmentTable: "agendamento",
-        AppointmentTypeTable: "tipo_de_agendamento"
+        AppointmentTypeTable: "tipo_de_agendamento",
+        AppointmentRelationTable: "relacao_tipo_agendamento"
     }
 
     protected getConnection(): Knex{
