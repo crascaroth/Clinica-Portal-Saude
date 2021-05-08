@@ -7,3 +7,4 @@ export const appointmentRouter = express.Router();
 const appointmentController = new AppointmentController();
 
 appointmentRouter.post("/create", appointmentController.createAppointment)
+appointmentRouter.post("/create/type", appointmentController.createAppointmentType)

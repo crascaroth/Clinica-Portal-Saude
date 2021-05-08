@@ -37,3 +37,12 @@ Content-Type: application/json
     "data": "2000-01-01",
     "retorno": "2000-01-30"
 }
+
+### Create Appointment Type
+POST http://localhost:3003/appointment/create/type
+Content-Type: application/json
+
+{
+    "nome": "Consulta",
+    "preco": 400
+}

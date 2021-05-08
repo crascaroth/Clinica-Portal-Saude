@@ -14,3 +14,16 @@ export type InputAppointmentComplete = {
     data: Date,
     retorno: Date
 }
+
+///////////////////////////////////////
+
+export type InputAppointmentType = {
+    nome: string,
+    preco: number
+}
+
+export type InputAppointmentTypeComplete = {
+    id: string,
+    nome: string,
+    preco: number
+}
