@@ -19,4 +19,13 @@ CREATE TABLE IF NOT EXISTS medico (
     login TEXT NOT NULL,
     password TEXT NOT NULL
   );
+
+  CREATE TABLE IF NOT EXISTS agendamento (
+    id VARCHAR(255) PRIMARY KEY NOT NULL,
+    fk_paciente TEXT NOT NULL, 
+          fk_medico TEXT NOT NULL,
+          pagamento_total FLOAT NOT NULL, 
+          data DATE NOT NULL,
+          retorno DATE NOT NULL
+);
   `)

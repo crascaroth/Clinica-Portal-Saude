@@ -25,3 +25,15 @@ Content-Type: application/json
 {
     "specialty": "Cardiologista"
 }
+
+### Create Appointment
+POST http://localhost:3003/appointment/create
+Content-Type: application/json
+
+{
+    "fk_paciente": "42b82872-bb17-4103-bfca-d09e3bb0ae93",
+    "fk_medico": "2ac1bafb-c658-49fb-9147-257a204261e8",
+    "pagamento_total": "10",
+    "data": "2000-01-01",
+    "retorno": "2000-01-30"
+}

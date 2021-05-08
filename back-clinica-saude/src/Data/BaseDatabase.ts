@@ -9,7 +9,8 @@ export abstract class BaseDatabase {
     protected tableNames = {        
         UserMedicTable: "medico",
         UserPatientTable: "paciente",
-        SpecialtyTable: "especialidades"
+        SpecialtyTable: "especialidades",
+        AppointmentTable: "agendamento"
     }
 
     protected getConnection(): Knex{
