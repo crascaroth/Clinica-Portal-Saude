@@ -1,8 +1,10 @@
+
 import { InputAppointmentComplete, InputAppointmentRelationComplete, InputAppointmentTypeComplete } from "../Entities/Appointment";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class AppointmentDatabase extends BaseDatabase {
     public async createAppointment(appointment: InputAppointmentComplete) {
+
         try {
             await this.getConnection().raw(`
             INSERT INTO ${this.tableNames.AppointmentTable} (
@@ -11,21 +13,26 @@ export class AppointmentDatabase extends BaseDatabase {
                 fk_medico,
                 pagamento_total,
                 data,
+
                 retorno
                 )
             VALUES (
+
                 "${appointment.id}",
                 "${appointment.fk_paciente}",
                 "${appointment.fk_medico}",
                 "${appointment.pagamento_total}",
                 "${appointment.data}",
+
                 "${appointment.retorno}"
             );
             `)
+
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
     }
+
 
     public async createAppointmentType(appointmentType: InputAppointmentTypeComplete){
         try {
@@ -48,4 +55,5 @@ export class AppointmentDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message)
         }
     }
+
 }

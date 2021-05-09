@@ -1,3 +1,4 @@
+
 import { Response, Request } from "express"
 import { AppointmentBusiness } from "../Business/appointmentBusiness";
 import { AppointmentDatabase } from "../Data/AppointmentDatabase";
@@ -12,6 +13,7 @@ export class AppointmentController {
     async createAppointment(req: Request, res: Response) {
         try {
 
+
             const input: InputAppointment = {
                 fk_paciente: req.body.fk_paciente,
                 fk_medico: req.body.fk_medico,
@@ -19,6 +21,7 @@ export class AppointmentController {
                 data: req.body.data,
                 retorno: req.body.retorno
             }
+
 
             const appointmentBusiness = new AppointmentBusiness(
                 new AppointmentDatabase,
@@ -87,3 +90,4 @@ export class AppointmentController {
 
 
 }
+

@@ -1,5 +1,11 @@
-import { AppointmentDatabase } from "../Data/AppointmentDatabase";
+
 import { InputAppointment, InputAppointmentComplete, InputAppointmentRelationComplete, InputAppointmentType, InputAppointmentTypeComplete } from "../Entities/Appointment";
+import { Request, Response } from "express";
+import { AppointmentDatabase } from "../Data/AppointmentDatabase";
+import { BaseDatabase } from "../Data/BaseDatabase";
+import { UserDatabase } from "../Data/UserDatabase";
+
+
 import { InvalidInputError } from "../Error/InvalidInputError";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
@@ -9,15 +15,18 @@ export class AppointmentBusiness {
     constructor(
         private appointmentDatabase: AppointmentDatabase,
         private idGenerator: IdGenerator,
+
     ) { }
 
     async createAppointment(appointment: InputAppointment) {
         if (
+
             !appointment.fk_paciente ||
             !appointment.fk_medico ||
             !appointment.pagamento_total ||
             !appointment.data ||
             !appointment.retorno
+
         ) {
             throw new InvalidInputError("Please insert all information")
         }
@@ -25,6 +34,7 @@ export class AppointmentBusiness {
         const id = this.idGenerator.generateId()
 
         const input: InputAppointmentComplete = {
+
             id,
             fk_paciente: appointment.fk_paciente,
             fk_medico: appointment.fk_medico,
@@ -32,6 +42,7 @@ export class AppointmentBusiness {
             data: appointment.data,
             retorno: appointment.retorno
         }
+
 
         await this.appointmentDatabase.createAppointment(input)
 
@@ -60,12 +71,8 @@ export class AppointmentBusiness {
 
         await this.appointmentDatabase.createAppointmentRelation(appointment_relation)
 
+
     }
 
 }
 
-// fk_paciente: req.body.fk_paciente,
-// fk_medico: req.body.fk_medico,
-// pagamento_total: req.body.pagamento_total,
-// data: req.body.data,
-// retorno: req.body.retorno

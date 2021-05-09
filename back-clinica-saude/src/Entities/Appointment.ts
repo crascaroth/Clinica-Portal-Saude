@@ -1,4 +1,6 @@
+
 ///////////////////////////////////////  APPOINTMENT  ///////////////////////////////////////
+
 
 
 export type InputAppointment = {
@@ -10,6 +12,7 @@ export type InputAppointment = {
 }
 
 export type InputAppointmentComplete = {
+
     id: string,
     fk_paciente: string,
     fk_medico: string,
@@ -39,4 +42,5 @@ export type InputAppointmentRelationComplete = {
     fk_agendamento: string,
     fk_tipo_de_agendamento: string
 }
+
 
