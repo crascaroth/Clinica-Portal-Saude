@@ -57,8 +57,17 @@ fk_medico VARCHAR(255) NOT NULL,
 fk_paciente VARCHAR(255) NOT NULL,
 data DATE NOT NULL,
 atualizacao DATE,
-descricao TEXT
+descricao TEXT,
+FOREIGN KEY (fk_medico) REFERENCES medico(id),
+FOREIGN KEY (fk_paciente) REFERENCES paciente(id)
 );
 
+
+SELECT * FROM modelo_de_laudo;
+CREATE TABLE IF NOT EXISTS modelo_de_laudo(
+id VARCHAR(255) PRIMARY KEY NOT NULL,
+fk_especialidade VARCHAR(255) NOT NULL,
+FOREIGN KEY (fk_especialidade) REFERENCES especialidades(id)
+); 
 
 `)

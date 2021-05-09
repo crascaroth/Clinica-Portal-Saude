@@ -2,7 +2,7 @@ import { Response, Request } from "express"
 import { ReportBusiness } from "../Business/reportBusiness";
 import { BaseDatabase } from "../Data/BaseDatabase";
 import { ReportDatabase } from "../Data/ReportDatabase";
-import { InputReport } from "../Entities/Report";
+import { InputReport, InputReportModel } from "../Entities/Report";
 import { IdGenerator } from "../Services/IdGenerator";
 
 export class ReportController {
@@ -25,6 +25,28 @@ export class ReportController {
             
             res.status(201).send("Report Created Sucessfully!")
 
+        } catch (error) {
+            res.status(400).send({ error: error.message });
+        }
+        await BaseDatabase.destroyConnection();
+    }
+
+    async createReportModel(req: Request, res: Response){
+        try {
+            const input: InputReportModel = {
+                fk_especialidade: req.body.fk_especialidade,
+                nome: req.body.nome
+            }
+
+            const reportBusiness = new ReportBusiness(
+                new ReportDatabase,
+                new IdGenerator,
+            )
+
+            await reportBusiness.createReportModel(input)
+
+            res.status(201).send("Report Model Created Sucessfully!")
+            
         } catch (error) {
             res.status(400).send({ error: error.message });
         }

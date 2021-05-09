@@ -1,3 +1,5 @@
+///////////////////////////////////////  REPORT  ///////////////////////////////////////
+
 export type InputReport = {
     fk_medico: string,
     fk_paciente: string,
@@ -13,4 +15,17 @@ export type InputReportComplete = {
     data: Date,
     atualizacao: Date,
     descricao: string
+}
+
+///////////////////////////////////////  REPORT MODEL  ///////////////////////////////////////
+
+export type InputReportModel = {
+    fk_especialidade: string,
+    nome: string
+}
+
+export type InputReportModelComplete = {
+    id: string,
+    fk_especialidade: string,
+    nome: string
 }

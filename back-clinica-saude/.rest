@@ -68,3 +68,12 @@ Content-Type: application/json
     "atualizacao": "2021-05-08",
     "descricao": "Consulta marcada para amanhã" 
 }
+
+### Create Report Model
+POST http://localhost:3003/report/create/model
+Content-Type: application/json
+
+{
+    "fk_especialidade": "a5600a4a-61fc-4218-910f-109b0c2048d8",
+    "nome": "Cardiologia Seu Zé"
+}

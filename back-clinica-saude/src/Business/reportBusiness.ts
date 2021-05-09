@@ -1,5 +1,5 @@
 import { ReportDatabase } from "../Data/ReportDatabase";
-import { InputReport, InputReportComplete } from "../Entities/Report";
+import { InputReport, InputReportComplete, InputReportModel, InputReportModelComplete } from "../Entities/Report";
 import { InvalidInputError } from "../Error/InvalidInputError";
 import { IdGenerator } from "../Services/IdGenerator";
 
@@ -33,6 +33,26 @@ export class ReportBusiness {
 
         await this.reportDatabase.createReport(input)
 
+    }
+
+    async createReportModel(reportModel: InputReportModel){
+        if(
+            !reportModel.fk_especialidade ||
+            !reportModel.nome
+        ){
+            throw new InvalidInputError("Please insert all information")
+        }
+
+        const id = this.idGenerator.generateId()
+
+        const input: InputReportModelComplete = {
+            id,
+            fk_especialidade: reportModel.fk_especialidade,
+            nome: reportModel.nome
+        }
+
+        await this.reportDatabase.createReportModel(input)
+        
     }
 
 }
