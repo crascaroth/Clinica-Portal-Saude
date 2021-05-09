@@ -12,7 +12,8 @@ export abstract class BaseDatabase {
         SpecialtyTable: "especialidades",
         AppointmentTable: "agendamento",
         AppointmentTypeTable: "tipo_de_agendamento",
-        AppointmentRelationTable: "relacao_tipo_agendamento"
+        AppointmentRelationTable: "relacao_tipo_agendamento",
+        ReportTable: "laudo",
     }
 
     protected getConnection(): Knex{

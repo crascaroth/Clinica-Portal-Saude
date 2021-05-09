@@ -55,3 +55,16 @@ Content-Type: application/json
     "fk_agendamento": "3333f7f6-e4d8-47d7-b663-e6b5710e43a7",
     "fk_tipo_de_agendamento": "4b46fd45-aa3e-4324-a261-bbcb58a1a87a"
 }
+
+
+### Create Report
+POST http://localhost:3003/report/create
+Content-Type: application/json
+
+{
+    "fk_medico": "2ac1bafb-c658-49fb-9147-257a204261e8",
+    "fk_paciente": "42b82872-bb17-4103-bfca-d09e3bb0ae93",
+    "data": "2021-05-07",
+    "atualizacao": "2021-05-08",
+    "descricao": "Consulta marcada para amanhã" 
+}

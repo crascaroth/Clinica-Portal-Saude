@@ -3,9 +3,8 @@ import { AppointmentBusiness } from "../Business/appointmentBusiness";
 import { AppointmentDatabase } from "../Data/AppointmentDatabase";
 import { BaseDatabase } from "../Data/BaseDatabase";
 import { InputAppointment, InputAppointmentRelationComplete, InputAppointmentType } from "../Entities/Appointment";
-import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
-import { TokenManager } from "../Services/TokenManager";
+
 
 
 export class AppointmentController {
