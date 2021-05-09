@@ -1,5 +1,5 @@
 import { ReportDatabase } from "../Data/ReportDatabase";
-import { InputReport, InputReportComplete, InputReportModel, InputReportModelComplete } from "../Entities/Report";
+import { InputReport, InputReportComplete, InputReportModel, InputReportModelComplete, InputReportRelationComplete } from "../Entities/Report";
 import { InvalidInputError } from "../Error/InvalidInputError";
 import { IdGenerator } from "../Services/IdGenerator";
 
@@ -52,7 +52,17 @@ export class ReportBusiness {
         }
 
         await this.reportDatabase.createReportModel(input)
-        
+
     }
+
+    async createReportRelation(reportRelation: InputReportRelationComplete){
+        if(!reportRelation.fk_laudo || !reportRelation.fk_modelo){
+            throw new InvalidInputError("Please insert all information")
+        }
+
+        await this.reportDatabase.createReportRelation(reportRelation)
+
+    }
+    
 
 }

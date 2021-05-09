@@ -15,6 +15,7 @@ export abstract class BaseDatabase {
         AppointmentRelationTable: "relacao_tipo_agendamento",
         ReportTable: "laudo",
         ReportModelTable: "modelo_de_laudo",
+        ReportRelationTable: "relacao_laudo_modelo",
     }
 
     protected getConnection(): Knex{

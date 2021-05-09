@@ -1,4 +1,4 @@
-import { InputReportComplete, InputReportModelComplete } from "../Entities/Report";
+import { InputReportComplete, InputReportModelComplete, InputReportRelationComplete } from "../Entities/Report";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ReportDatabase extends BaseDatabase {
@@ -37,6 +37,17 @@ export class ReportDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message)
         }
         
+    }
+
+    public async createReportRelation(reportRelation: InputReportRelationComplete){
+        try {
+            await this.getConnection().raw(`
+            INSERT INTO ${this.tableNames.ReportRelationTable} (fk_laudo, fk_modelo)
+            VALUES("${reportRelation.fk_laudo}","${reportRelation.fk_modelo}");            
+            `)
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
     }
 
 }

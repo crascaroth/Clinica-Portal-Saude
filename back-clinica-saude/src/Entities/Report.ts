@@ -29,3 +29,11 @@ export type InputReportModelComplete = {
     fk_especialidade: string,
     nome: string
 }
+
+///////////////////////////////////////  REPORT RELATION  ///////////////////////////////////////
+
+
+export type InputReportRelationComplete = {
+    fk_laudo: string,
+    fk_modelo: string
+}

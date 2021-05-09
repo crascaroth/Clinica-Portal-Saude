@@ -68,6 +68,15 @@ CREATE TABLE IF NOT EXISTS modelo_de_laudo(
 id VARCHAR(255) PRIMARY KEY NOT NULL,
 fk_especialidade VARCHAR(255) NOT NULL,
 FOREIGN KEY (fk_especialidade) REFERENCES especialidades(id)
-); 
+);
+
+SELECT * FROM relacao_laudo_modelo;
+CREATE TABLE IF NOT EXISTS relacao_laudo_modelo(
+fk_laudo VARCHAR(255) NOT NULL,
+fk_modelo VARCHAR(255) NOT NULL,
+FOREIGN KEY (fk_laudo) REFERENCES laudo(id),
+FOREIGN KEY (fk_modelo) REFERENCES modelo_de_laudo(id)
+);
+
 
 `)
