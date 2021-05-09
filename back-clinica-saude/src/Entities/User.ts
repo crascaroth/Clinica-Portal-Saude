@@ -1,8 +1,7 @@
 export type AuthenticationData = {
-    
+    id: string,
+    login: string
 }
-
-
 
 ///////////////////////////////////////  MEDIC  ///////////////////////////////////////
 

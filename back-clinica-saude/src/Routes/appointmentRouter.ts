@@ -1,9 +1,12 @@
 import express from "express";
-import { AppointmentController } from "../Controller/AppointmentController";
-
-export const appointmentRouter = express.Router()
-
-const appointmentController = new AppointmentController()
+import { AppointmentController } from "../Controller/appointmentController";
 
 
-appointmentRouter.post("/appointment/create", appointmentController.createAppointment)
+export const appointmentRouter = express.Router();
+
+const appointmentController = new AppointmentController();
+
+appointmentRouter.post("/create", appointmentController.createAppointment)
+appointmentRouter.post("/create/type", appointmentController.createAppointmentType)
+appointmentRouter.post("/create/relation",appointmentController.createAppointmentRelation)
+

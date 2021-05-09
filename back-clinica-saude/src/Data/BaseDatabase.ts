@@ -7,10 +7,17 @@ export abstract class BaseDatabase {
     private static connection: Knex | null = null;
 
     protected tableNames = {        
-        UserMedicTable: "Medico",
-        UserPatientTable: "Paciente",
-        SpecialtyTable: "Especialidades",
-        AppointmentTable: "Agendamento",
+
+        UserMedicTable: "medico",
+        UserPatientTable: "paciente",
+        SpecialtyTable: "especialidades",
+        AppointmentTable: "agendamento",
+        AppointmentTypeTable: "tipo_de_agendamento",
+        AppointmentRelationTable: "relacao_tipo_agendamento",
+        ReportTable: "laudo",
+        ReportModelTable: "modelo_de_laudo",
+        ReportRelationTable: "relacao_laudo_modelo",
+
     }
 
     protected getConnection(): Knex{
