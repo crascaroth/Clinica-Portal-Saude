@@ -11,7 +11,7 @@ export type InputUserMedic = {
     fk_especialidade: string
 }
 
-export type UserMedicComplete ={
+export type UserMedicComplete = {
     id: string,
     login: string,
     password: string,
@@ -30,16 +30,30 @@ export type InputUserPatient = {
 export type UserPatientComplete = {
     id: string,
     login: string,
-    password: string,    
+    password: string,
 }
 
 ///////////////////////////////////////  SPECIALTY  ///////////////////////////////////////
 
 export type InputUserSpecialty = {
-    specialty:string
+    specialty: string
 }
 
 export type UserSpecialtyComplete = {
     id: string,
     specialty: string
+}
+
+///////////////////////////////////////  LOGIN  ///////////////////////////////////////
+
+export type InputUserLogin = {
+    login: string,
+    password: string,
+    userType: string
+}
+
+export type userDatabaseInfo = {
+    id: string,
+    login: string,
+    password: string
 }

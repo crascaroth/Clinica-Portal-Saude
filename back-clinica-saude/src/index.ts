@@ -1,10 +1,10 @@
-import express, { Express, Request, Response } from "express"
+import { Express} from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import { userRouter } from "./Routes/userRouter"
 import { appointmentRouter } from "./Routes/appointmentRouter"
 import { reportRouter } from "./Routes/reportRouter"
-
+import express from "express"
 
 dotenv.config()
 const app: Express = express()

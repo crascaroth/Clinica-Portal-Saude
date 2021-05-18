@@ -8,3 +8,4 @@ const userController = new UserController();
 userRouter.post("/signup/medic", userController.signupMedic)
 userRouter.post("/signup/patient", userController.signupPatient)
 userRouter.post("/signup/specialty", userController.signupSpecialty)
+userRouter.post("/login", userController.login)

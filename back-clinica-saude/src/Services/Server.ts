@@ -2,7 +2,6 @@ import express, { Express} from "express"
 import cors from "cors"
 import knex from "knex"
 import dotenv from "dotenv"
-
 import Knex from "knex"
 
 

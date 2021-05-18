@@ -1,8 +1,8 @@
-import { UserMedicComplete, UserPatientComplete, UserSpecialtyComplete } from "../Entities/User";
+import { userDatabaseInfo, UserMedicComplete, UserPatientComplete, UserSpecialtyComplete } from "../Entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
-    public async createUserMedic(user: UserMedicComplete): Promise<void>{
+    public async createUserMedic(user: UserMedicComplete): Promise<void> {
         try {
             await this.getConnection().raw(`
             INSERT INTO ${this.tableNames.UserMedicTable} (id, login, password, fk_especialidade)
@@ -14,8 +14,8 @@ export class UserDatabase extends BaseDatabase {
         }
     }
 
-    public async createUserPatient(user: UserPatientComplete): Promise<void>{
-        try {  
+    public async createUserPatient(user: UserPatientComplete): Promise<void> {
+        try {
 
             await this.getConnection().raw(`
             INSERT INTO ${this.tableNames.UserPatientTable}(id, login, password)
@@ -28,15 +28,44 @@ export class UserDatabase extends BaseDatabase {
 
     }
 
-    public async createUserSpecialty(user: UserSpecialtyComplete): Promise<void>{
+    public async createUserSpecialty(user: UserSpecialtyComplete): Promise<void> {
         try {
             await this.getConnection().raw(`
             INSERT INTO ${this.tableNames.SpecialtyTable} (id, especialidade)
             VALUES ("${user.id}", "${user.specialty}");
             `)
-            
+
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
+    }
+
+    public async getPatientInfo(login: string): Promise<userDatabaseInfo> {
+        try {
+            const result = await this.getConnection().raw(`
+            SELECT id, login, password
+            FROM ${this.tableNames.UserPatientTable}
+            WHERE ( login === "${login}" )
+            `)
+            console.log(result[0])
+            return result[0]
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
+    public async getMedicInfo(login: string): Promise<userDatabaseInfo> {
+        try {
+            const result = await this.getConnection().raw(`
+            SELECT id, login, password
+            FROM ${this.tableNames.UserMedicTable}
+            WHERE ( login === "${login}" )
+            `)
+            console.log(result[0])
+            return result[0]
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+
     }
 }

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UserBusiness } from "../Business/userBusiness";
 import { BaseDatabase } from "../Data/BaseDatabase";
 import { UserDatabase } from "../Data/UserDatabase";
-import { InputUserMedic, InputUserPatient, InputUserSpecialty } from "../Entities/User";
+import { InputUserLogin, InputUserMedic, InputUserPatient, InputUserSpecialty } from "../Entities/User";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
 import { TokenManager } from "../Services/TokenManager";
@@ -82,6 +82,32 @@ export class UserController {
 
         await BaseDatabase.destroyConnection();
 
+    }
+
+    async login(req: Request, res: Response){
+        try {
+            const input: InputUserLogin = {
+                login: req.body.login,
+                password: req.body.password,
+                userType: req.body.userType
+            }
+
+            const userBusiness = new UserBusiness(
+                new UserDatabase,
+                new IdGenerator,
+                new HashManager,
+                new TokenManager
+            )
+
+            const result = await userBusiness.login(input)
+            
+            res.status(200).send(result)
+
+        } catch (error) {
+            res.status(400).send({ error: error.message });            
+        }
+
+        await BaseDatabase.destroyConnection();
     }
 
 }
