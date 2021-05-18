@@ -101,7 +101,7 @@ export class UserController {
 
             const result = await userBusiness.login(input)
             
-            res.status(200).send(result)
+            res.status(200).send({token: result})
 
         } catch (error) {
             res.status(400).send({ error: error.message });            
