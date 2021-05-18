@@ -45,7 +45,7 @@ export class UserDatabase extends BaseDatabase {
             const result = await this.getConnection().raw(`
             SELECT id, login, password
             FROM ${this.tableNames.UserPatientTable}
-            WHERE ( login === "${login}" )
+            WHERE ( login = "${login}" )
             `)
             console.log(result[0])
             return result[0]
@@ -59,7 +59,7 @@ export class UserDatabase extends BaseDatabase {
             const result = await this.getConnection().raw(`
             SELECT id, login, password
             FROM ${this.tableNames.UserMedicTable}
-            WHERE ( login === "${login}" )
+            WHERE ( login = "${login}" )
             `)
             console.log(result[0])
             return result[0]

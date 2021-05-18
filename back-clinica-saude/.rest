@@ -14,7 +14,7 @@ POST http://localhost:3003/user/signup/patient
 Content-Type: application/json
 
 {
-    "login":"allison@dois.empregos.com",
+    "login": "carol@porpetinha.com",
     "password": "123456"
 }
 
@@ -88,11 +88,11 @@ Content-Type: application/json
 }
 
 ### Login teste Patient
-PUT http://localhost:3003/user/login/teste
+PUT http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "login":,
-    "password": ,
-    "userTYpe": "Patient"
+    "login": "carol@porpetinha.com",
+    "password": "123456",
+    "userType": "Patient"
 }
