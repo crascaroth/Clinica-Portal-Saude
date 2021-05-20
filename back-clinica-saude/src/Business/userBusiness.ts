@@ -1,5 +1,5 @@
 import { UserDatabase } from "../Data/UserDatabase";
-import { InputUserLogin, InputUserMedic, InputUserPatient, InputUserSpecialty, UserMedicComplete, UserPatientComplete, UserSpecialtyComplete } from "../Entities/User";
+import { InputUserLogin, InputUserMedic, InputUserPatient, UserMedicComplete, UserPatientComplete } from "../Entities/User";
 import { InvalidInputError } from "../Error/InvalidInputError";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
@@ -65,20 +65,6 @@ export class UserBusiness {
 
     }
 
-    async createUserSpecialty(user: InputUserSpecialty) {
-        if (!user.specialty) {
-            throw new InvalidInputError("Please insert the specialty")
-        }
-
-        const id = this.idGenerator.generateId()
-        const input: UserSpecialtyComplete = {
-            id,
-            specialty: user.specialty
-        }
-
-        await this.userDatabase.createUserSpecialty(input)
-
-    }
 
     async login(user: InputUserLogin): Promise<string> {
         try {
@@ -125,6 +111,14 @@ export class UserBusiness {
     async getAllMedics(): Promise<object[]>{
         try {
              return await this.userDatabase.getAllMedics()
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    }
+
+    async getAllPatients(): Promise<object[]>{
+        try {
+            return await this.userDatabase.getAllPatients()
         } catch (error) {
             throw new Error(error.message)
         }

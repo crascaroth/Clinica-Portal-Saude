@@ -4,9 +4,9 @@ POST http://localhost:3003/user/signup/medic
 Content-Type: application/json
 
 {
-    "login":"Allison@dois.empregos.com",
+    "login":"FelipeMoura@Brasil.com",
     "password":"123456",
-    "fk_especialidade": "a5600a4a-61fc-4218-910f-109b0c2048d8"
+    "fk_especialidade": "a07fb89c-2216-4f88-bcbb-3c45dcf61300"
 }
 
 ### Signup Paciente
@@ -19,11 +19,11 @@ Content-Type: application/json
 }
 
 ### Signup Especialidades
-POST http://localhost:3003/user/signup/specialty
+POST http://localhost:3003/specialty/signup
 Content-Type: application/json
 
 {
-    "specialty": "Cardiologista"
+    "specialty": "Reumatologia"
 }
 
 ### Create Appointment
@@ -96,3 +96,16 @@ Content-Type: application/json
     "password": "123456",
     "userType": "Patient"
 }
+
+### Get All Medics with Specialties
+
+GET http://localhost:3003/user/medic/getAll
+Content-Type: application/json
+
+### Get All Patients
+GET http://localhost:3003/user/patient/getAll
+Content-Type: application/json
+
+### Get All Specialties
+GET http://localhost:3003/specialty/getAll
+Content-Type: application/json

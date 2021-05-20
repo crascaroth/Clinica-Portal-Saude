@@ -1,4 +1,4 @@
-import { userDatabaseInfo, UserMedicComplete, UserPatientComplete, UserSpecialtyComplete } from "../Entities/User";
+import { userDatabaseInfo, UserMedicComplete, UserPatientComplete } from "../Entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -28,17 +28,6 @@ export class UserDatabase extends BaseDatabase {
 
     }
 
-    public async createUserSpecialty(user: UserSpecialtyComplete): Promise<void> {
-        try {
-            await this.getConnection().raw(`
-            INSERT INTO ${this.tableNames.SpecialtyTable} (id, especialidade)
-            VALUES ("${user.id}", "${user.specialty}");
-            `)
-
-        } catch (error) {
-            throw new Error(error.sqlMessage || error.message)
-        }
-    }
 
     public async getPatientInfo(login: string): Promise<userDatabaseInfo> {
         try {
@@ -72,12 +61,26 @@ export class UserDatabase extends BaseDatabase {
     public async getAllMedics(): Promise<object[]> {
         try {
             const result = await this.getConnection().raw(`
-            SELECT *
+            SELECT login, especialidade
             FROM ${this.tableNames.UserMedicTable}
-            
+            JOIN ${this.tableNames.SpecialtyTable}
+	        ON ${this.tableNames.UserMedicTable}.fk_especialidade = ${this.tableNames.SpecialtyTable}.id;
             `)
-            console.log(result)
-            return result
+            // console.log(result[0])
+            return result[0]
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
+    public async getAllPatients(): Promise<object[]>{
+        try {
+            const result = await this.getConnection().raw(`
+            SELECT login
+            FROM ${this.tableNames.UserPatientTable};
+            `)
+            // console.log(result[0])
+            return result[0]
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }

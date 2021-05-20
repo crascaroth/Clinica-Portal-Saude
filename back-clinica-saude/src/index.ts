@@ -5,6 +5,7 @@ import { userRouter } from "./Routes/userRouter"
 import { appointmentRouter } from "./Routes/appointmentRouter"
 import { reportRouter } from "./Routes/reportRouter"
 import express from "express"
+import { specialtyRouter } from "./Routes/specialtyRouter"
 
 dotenv.config()
 const app: Express = express()
@@ -18,3 +19,4 @@ app.listen(3003, () => {
 app.use("/user", userRouter);
 app.use("/appointment", appointmentRouter);
 app.use("/report", reportRouter);
+app.use("/specialty", specialtyRouter);

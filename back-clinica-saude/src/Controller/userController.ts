@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UserBusiness } from "../Business/userBusiness";
 import { BaseDatabase } from "../Data/BaseDatabase";
 import { UserDatabase } from "../Data/UserDatabase";
-import { InputUserLogin, InputUserMedic, InputUserPatient, InputUserSpecialty } from "../Entities/User";
+import { InputUserLogin, InputUserMedic, InputUserPatient} from "../Entities/User";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerator } from "../Services/IdGenerator";
 import { TokenManager } from "../Services/TokenManager";
@@ -60,29 +60,6 @@ export class UserController {
         await BaseDatabase.destroyConnection();
     }
 
-    async signupSpecialty(req: Request, res: Response) {
-        try {
-            const input: InputUserSpecialty = {
-                specialty: req.body.specialty
-            }
-
-            const userBusiness = new UserBusiness(
-                new UserDatabase,
-                new IdGenerator,
-                new HashManager,
-                new TokenManager
-            )
-
-            await userBusiness.createUserSpecialty(input)
-
-            res.status(200).send("Specialty Inserted!")
-        } catch (error) {
-            res.status(400).send({ error: error.message });
-        }
-
-        await BaseDatabase.destroyConnection();
-
-    }
 
     async login(req: Request, res: Response) {
         try {
@@ -121,13 +98,33 @@ export class UserController {
             )
 
             const result = await userBusiness.getAllMedics()
-            
-            res.status(200).send({medics: result})
+
+            res.status(200).send({ medics: result })
 
         } catch (error) {
             res.status(400).send({ error: error.message });
         }
 
+        await BaseDatabase.destroyConnection();
+    }
+
+    async getAllPatients(req: Request, res: Response) {
+        try {
+
+            const userBusiness = new UserBusiness(
+                new UserDatabase,
+                new IdGenerator,
+                new HashManager,
+                new TokenManager
+            )
+
+            const result = await userBusiness.getAllPatients()
+
+            res.status(200).send({ patients: result })
+
+        } catch (error) {
+            res.status(400).send({ error: error.message });
+        }
         await BaseDatabase.destroyConnection();
     }
 
