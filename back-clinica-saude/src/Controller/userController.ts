@@ -84,7 +84,7 @@ export class UserController {
 
     }
 
-    async login(req: Request, res: Response){
+    async login(req: Request, res: Response) {
         try {
             const input: InputUserLogin = {
                 login: req.body.login,
@@ -100,11 +100,32 @@ export class UserController {
             )
 
             const result = await userBusiness.login(input)
-            
-            res.status(200).send({token: result})
+
+            res.status(200).send({ token: result })
 
         } catch (error) {
-            res.status(400).send({ error: error.message });            
+            res.status(400).send({ error: error.message });
+        }
+
+        await BaseDatabase.destroyConnection();
+    }
+
+    async getAllMedics(req: Request, res: Response) {
+        try {
+
+            const userBusiness = new UserBusiness(
+                new UserDatabase,
+                new IdGenerator,
+                new HashManager,
+                new TokenManager
+            )
+
+            const result = await userBusiness.getAllMedics()
+            
+            res.status(200).send({medics: result})
+
+        } catch (error) {
+            res.status(400).send({ error: error.message });
         }
 
         await BaseDatabase.destroyConnection();

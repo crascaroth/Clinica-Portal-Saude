@@ -121,4 +121,12 @@ export class UserBusiness {
             throw new Error(error.message)
         }
     }
+
+    async getAllMedics(): Promise<object[]>{
+        try {
+             return await this.userDatabase.getAllMedics()
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    }
 }

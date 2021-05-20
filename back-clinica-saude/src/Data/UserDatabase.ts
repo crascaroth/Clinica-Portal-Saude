@@ -68,4 +68,18 @@ export class UserDatabase extends BaseDatabase {
         }
 
     }
+
+    public async getAllMedics(): Promise<object[]> {
+        try {
+            const result = await this.getConnection().raw(`
+            SELECT *
+            FROM ${this.tableNames.UserMedicTable}
+            
+            `)
+            console.log(result)
+            return result
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
 }
