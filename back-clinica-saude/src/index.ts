@@ -1,4 +1,4 @@
-import { Express} from "express"
+import { Express } from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import { userRouter } from "./Routes/userRouter"
