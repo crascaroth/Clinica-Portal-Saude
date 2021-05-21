@@ -1,27 +1,22 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import MainPage from '../Pages/MainPage/MainPage'
-
+import MainPage from "../Pages/MainPage/MainPage";
+import LoginPage from "../Pages/LoginPage/LoginPage";
 
 export default function Router() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <LoginPage />
+        </Route>
 
-    return (
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
 
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/">                    
-                    <MainPage/>
-                </Route>
-                
-                <Route exact path="/1">
-                    
-                </Route>
-
-                <Route exact path="/2">
-                    
-                </Route>
-
-            </Switch>
-        </BrowserRouter>
-    )
+        <Route exact path="/2"></Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
