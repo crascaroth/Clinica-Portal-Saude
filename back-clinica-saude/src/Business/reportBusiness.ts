@@ -63,6 +63,10 @@ export class ReportBusiness {
         await this.reportDatabase.createReportRelation(reportRelation)
 
     }
+
+    async getAllReports(){
+        return await this.reportDatabase.getAllReports()
+    }
     
 
 }
