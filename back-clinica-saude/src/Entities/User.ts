@@ -33,16 +33,6 @@ export type UserPatientComplete = {
     password: string,
 }
 
-///////////////////////////////////////  SPECIALTY  ///////////////////////////////////////
-
-export type InputUserSpecialty = {
-    specialty: string
-}
-
-export type UserSpecialtyComplete = {
-    id: string,
-    specialty: string
-}
 
 ///////////////////////////////////////  LOGIN  ///////////////////////////////////////
 

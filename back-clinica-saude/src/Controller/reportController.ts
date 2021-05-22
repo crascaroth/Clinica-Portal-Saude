@@ -22,7 +22,7 @@ export class ReportController {
             )
 
             await reportBusiness.createReport(input)
-            
+
             res.status(201).send("Report Created Sucessfully!")
 
         } catch (error) {
@@ -31,7 +31,7 @@ export class ReportController {
         await BaseDatabase.destroyConnection();
     }
 
-    async createReportModel(req: Request, res: Response){
+    async createReportModel(req: Request, res: Response) {
         try {
             const input: InputReportModel = {
                 fk_especialidade: req.body.fk_especialidade,
@@ -55,7 +55,7 @@ export class ReportController {
 
     async createReportRelation(req: Request, res: Response) {
         try {
-            const input: InputReportRelationComplete ={
+            const input: InputReportRelationComplete = {
                 fk_laudo: req.body.fk_laudo,
                 fk_modelo: req.body.fk_modelo
             }
@@ -71,6 +71,26 @@ export class ReportController {
         } catch (error) {
             res.status(400).send({ error: error.message });
         }
+        await BaseDatabase.destroyConnection();
+    }
+
+    async getAllReports(req: Request, res: Response) {
+        
+
+        try {
+            
+            const reportBusiness = new ReportBusiness(
+                new ReportDatabase,
+                new IdGenerator,
+            )
+    
+            const result = await reportBusiness.getAllReports()
+
+            res.status(200).send({ reports: result});
+        } catch (error) {
+            res.status(400).send({ error: error.message });
+        }
+
         await BaseDatabase.destroyConnection();
     }
 

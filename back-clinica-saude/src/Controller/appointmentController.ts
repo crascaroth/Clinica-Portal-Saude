@@ -88,6 +88,26 @@ export class AppointmentController {
         await BaseDatabase.destroyConnection();
     }
 
+    async getAllAppointments(req: Request, res: Response){
+        try {
+
+            const appointmentBusiness = new AppointmentBusiness(
+                new AppointmentDatabase,
+                new IdGenerator
+            );
+            const result = await appointmentBusiness.getAllAppointments()
+            
+            res.status(200).send(result)
+            
+        } catch (error) {
+
+            res.status(400).send({ error: error.message });
+        
+        }
+        
+        await BaseDatabase.destroyConnection();
+    }
+
 
 }
 

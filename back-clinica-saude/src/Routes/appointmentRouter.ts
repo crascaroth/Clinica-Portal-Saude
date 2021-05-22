@@ -10,3 +10,4 @@ appointmentRouter.post("/create", appointmentController.createAppointment)
 appointmentRouter.post("/create/type", appointmentController.createAppointmentType)
 appointmentRouter.post("/create/relation",appointmentController.createAppointmentRelation)
 
+appointmentRouter.get("/getAll", appointmentController.getAllAppointments) 

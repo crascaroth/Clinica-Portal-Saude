@@ -4,9 +4,9 @@ POST http://localhost:3003/user/signup/medic
 Content-Type: application/json
 
 {
-    "login":"Allison@dois.empregos.com",
+    "login":"FelipeMoura@Brasil.com",
     "password":"123456",
-    "fk_especialidade": "a5600a4a-61fc-4218-910f-109b0c2048d8"
+    "fk_especialidade": "a07fb89c-2216-4f88-bcbb-3c45dcf61300"
 }
 
 ### Signup Paciente
@@ -14,16 +14,16 @@ POST http://localhost:3003/user/signup/patient
 Content-Type: application/json
 
 {
-    "login": "carol@porpetinha.com",
+    "login": "bruno@vallim.com",
     "password": "123456"
 }
 
 ### Signup Especialidades
-POST http://localhost:3003/user/signup/specialty
+POST http://localhost:3003/specialty/signup
 Content-Type: application/json
 
 {
-    "specialty": "Cardiologista"
+    "specialty": "Reumatologia"
 }
 
 ### Create Appointment
@@ -31,11 +31,11 @@ POST http://localhost:3003/appointment/create
 Content-Type: application/json
 
 {
-    "fk_paciente": "42b82872-bb17-4103-bfca-d09e3bb0ae93",
-    "fk_medico": "2ac1bafb-c658-49fb-9147-257a204261e8",
-    "pagamento_total": "10",
-    "data": "2000-01-01",
-    "retorno": "2000-01-30"
+    "fk_paciente": "1396b1fc-af81-4b59-a980-bbc9fe7118d9",
+    "fk_medico": "1e7ecd9a-9b0d-4cd9-a8e2-81c5154dc08e",
+    "pagamento_total": "500",
+    "data": "2022-01-11",
+    "retorno": "2022-02-07"
 }
 
 ### Create Appointment Type
@@ -43,8 +43,8 @@ POST http://localhost:3003/appointment/create/type
 Content-Type: application/json
 
 {
-    "nome": "Consulta",
-    "preco": 400
+    "nome": "Internação",
+    "preco": 50
 }
 
 ### Create Appointment Relation
@@ -52,8 +52,8 @@ POST http://localhost:3003/appointment/create/relation
 Content-Type: application/json
 
 {
-    "fk_agendamento": "3333f7f6-e4d8-47d7-b663-e6b5710e43a7",
-    "fk_tipo_de_agendamento": "4b46fd45-aa3e-4324-a261-bbcb58a1a87a"
+    "fk_agendamento": "93412efd-1169-4291-a6c9-e8abd66f8da5",
+    "fk_tipo_de_agendamento": "53de394a-315c-43e2-9635-990ec4aef57d"
 }
 
 
@@ -96,3 +96,24 @@ Content-Type: application/json
     "password": "123456",
     "userType": "Patient"
 }
+
+### Get All Medics with Specialties
+
+GET http://localhost:3003/user/medic/getAll
+Content-Type: application/json
+
+### Get All Patients
+GET http://localhost:3003/user/patient/getAll
+Content-Type: application/json
+
+### Get All Specialties
+GET http://localhost:3003/specialty/getAll
+Content-Type: application/json
+
+### Get All Appointments
+GET http://localhost:3003/appointment/getAll
+Content-Type: application/json
+
+### Get All Reports
+GET http://localhost:3003/report/getAll
+Content-Type: application/json

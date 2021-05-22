@@ -74,5 +74,15 @@ export class AppointmentBusiness {
 
     }
 
+    async getAllAppointments() {
+        let result
+        result = await this.appointmentDatabase.getAllAppointments()
+        if(!result){
+            throw new Error("No Appointment")
+        }    
+        
+        return result[0]
+    }
+
 }
 

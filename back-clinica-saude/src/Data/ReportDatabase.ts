@@ -50,4 +50,24 @@ export class ReportDatabase extends BaseDatabase {
         }
     }
 
+    public async getAllReports(): Promise<object[]>{
+        try {
+
+            const result = await this.getConnection().raw(`
+            SELECT ${this.tableNames.ReportTable}.data, ${this.tableNames.ReportTable}.atualizacao, ${this.tableNames.ReportTable}.descricao, ${this.tableNames.UserPatientTable}.login, ${this.tableNames.UserMedicTable}.login, ${this.tableNames.SpecialtyTable}.especialidade,${this.tableNames.ReportModelTable}.nome
+            FROM ${this.tableNames.ReportTable}
+            JOIN ${this.tableNames.UserPatientTable} ON ${this.tableNames.ReportTable}.fk_paciente = ${this.tableNames.UserPatientTable}.id
+            JOIN ${this.tableNames.UserMedicTable} ON ${this.tableNames.ReportTable}.fk_medico = ${this.tableNames.UserMedicTable}.id
+            JOIN ${this.tableNames.ReportRelationTable} ON ${this.tableNames.ReportRelationTable}.fk_laudo = ${this.tableNames.ReportTable}.id
+            JOIN ${this.tableNames.ReportModelTable} ON ${this.tableNames.ReportRelationTable}.fk_modelo = ${this.tableNames.ReportModelTable}.id
+            JOIN ${this.tableNames.SpecialtyTable} ON ${this.tableNames.ReportModelTable}.fk_especialidade = ${this.tableNames.SpecialtyTable}.id;
+            `)
+
+            return result[0]
+            
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
 }
