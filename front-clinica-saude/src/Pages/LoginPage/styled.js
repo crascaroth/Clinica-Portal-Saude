@@ -58,8 +58,8 @@ export const Form = styled.div `
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 8px 12px 1px rgba(29,17,51,.04),0 3px 16px 2px rgba(9,32,77,.12),0 5px 10px -3px rgba(29,17,51,.12);
-    margin: 16px;
-    padding: 64px;
+    margin: 1px;
+    padding: 40px 60px;
 
     h2 {
             font-size: 2.375rem;
@@ -75,21 +75,71 @@ export const Form = styled.div `
 `
 
 export const InputDiv = styled.div `
-
         display: grid;
-        grid-template-columns: 7% 93%;
-        margin: 25px 0;
-        padding: 5px 0;
+        margin: 8px 0;
 `
 
-
 export const DivOne = styled.div `
-    margin-top: 0;
-    `
+    position: relative;
+    height: 48px;
+    margin-bottom: 1.5rem;
+
+    label {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        padding: 0 .25rem;
+        background: #fff;
+        color: #999;
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+
+    input:focus, input:valid {
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        border: 1px solid #999;
+    }
+
+    input:focus ~ label,
+    input:valid ~ label {
+        transform: translateY(-25px);
+        font-size: 15px;
+        background-color: #fff;
+        color: #999;
+    }
+
+`
 
 export const DivTwo = styled.div `
-    margin-bottom: 4px;
-    `
+    position: relative;
+    height: 48px;
+
+label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 .25rem;
+    background: #fff;
+    color: #999;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+input:focus, input:valid {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid #999;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    transform: translateY(-25px);
+    font-size: 15px;
+    background-color: #fff;
+    color: #999;
+}
+`
 
 export const IconeDiv = styled.div `
     display: flex;
@@ -100,4 +150,49 @@ export const IconeDiv = styled.div `
         color: red;
     }
 
+`
+export const Input = styled.input `
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    border: 1px solid #999;    
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    font-size: 1rem;
+    font-family: Arial;
+    color: #000;
+    z-index: 1;
+`
+export const Label = styled.label``
+
+export const Link = styled.a`
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.9rem;
+    transition: .3s;
+
+    :hover {
+        color: #e83b4c;
+    }
+`
+
+export const BtnLogin = styled.input `
+    display: block;
+    width: 100%;
+    height: 33.333px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
+    background: #363635;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
 `
